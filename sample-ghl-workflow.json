@@ -1,0 +1,68 @@
+{
+  "project": "GoHighLevel AI Lead Follow-Up Automation",
+  "type": "portfolio-demo",
+  "platform": "GoHighLevel",
+  "trigger": {
+    "event": "New Lead Created",
+    "source": "Website Form"
+  },
+  "contact": {
+    "name": "Alex Morgan",
+    "email": "alex.morgan@example.com",
+    "phone": "+15550001234",
+    "lead_source": "Website",
+    "service_interest": "AI Automation"
+  },
+  "workflow": [
+    {
+      "step": 1,
+      "action": "Create or Update Contact",
+      "description": "Store the incoming lead in the CRM and update known contact fields."
+    },
+    {
+      "step": 2,
+      "action": "Create Opportunity",
+      "pipeline": "Demo Sales Pipeline",
+      "stage": "New Lead"
+    },
+    {
+      "step": 3,
+      "action": "Send Initial Follow-Up",
+      "channel": "SMS",
+      "message": "Hi {{contact.first_name}}, thanks for your enquiry. We have received your request and will follow up shortly."
+    },
+    {
+      "step": 4,
+      "action": "Wait",
+      "duration": "10 minutes"
+    },
+    {
+      "step": 5,
+      "action": "Check Lead Status",
+      "condition": "Contact has not replied"
+    },
+    {
+      "step": 6,
+      "action": "Send Follow-Up",
+      "channel": "Email",
+      "subject": "Following up on your enquiry"
+    },
+    {
+      "step": 7,
+      "action": "Internal Notification",
+      "recipient": "Assigned Sales User",
+      "message": "New lead requires follow-up."
+    },
+    {
+      "step": 8,
+      "action": "Update Opportunity",
+      "stage": "Follow-Up Started"
+    }
+  ],
+  "security": {
+    "contains_real_client_data": false,
+    "contains_credentials": false,
+    "contains_api_keys": false
+  },
+  "notes": "Demo configuration for portfolio purposes. Adapt triggers, timing, channels, pipeline stages, and qualification rules for each implementation."
+}
